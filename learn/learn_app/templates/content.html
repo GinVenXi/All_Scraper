@@ -1,0 +1,395 @@
+<div class="container">
+{#    <h1>搜索结果</h1>#}
+    <table class="table table-striped table-hover">
+        {% if platform == "amz" %}
+            {% if content == "keywords" %}
+                <tr>
+                    <th>序号</th>
+                    <th>国家</th>
+                    <th>asin</th>
+                    <th>关键词</th>
+                    <th>排名</th>
+                    <th>页码</th>
+                    <th>页面位置</th>
+                </tr>
+                {% for contact in contacts %}
+                    <tr>
+                        <td class="tac">{{ contact.id }}</td>
+                        <td class="tac">{{ contact.region }}</td>
+                        <td class="tac">{{ contact.asin }}</td>
+                        <td class="tac">{{ contact.keywords }}</td>
+                        <td class="tac">{{ contact.rank }}</td>
+                        <td class="tac">{{ contact.page_id }}</td>
+                        <td class="tac">{{ contact.page_position }}</td>
+                    </tr>
+                {% endfor %}
+                {% elif content == "product" or content == "keyword" %}
+                    <tr>
+                            <th>序号</th>
+                            <th>国家</th>
+                            <th>asin</th>
+                            <th>标题</th>
+                            <th>评级</th>
+                            <th>评论数</th>
+                            <th>价格</th>
+                            <th>原价</th>
+                            <th>发货方式</th>
+                            <th>店铺id</th>
+                            <th>店铺名称</th>
+                        </tr>
+                    {% for contact in contacts %}
+                        <tr>
+                            <td class="tac">{{ contact.id }}</td>
+                            <td class="tac">{{ contact.region }}</td>
+                            <td class="tac">{{ contact.asin }}</td>
+                            <td class="tac">{{ contact.title }}</td>
+                            <td class="tac">{{ contact.rating }}</td>
+                            <td class="tac">{{ contact.review_count }}</td>
+                            <td class="tac">{{ contact.price }}</td>
+                            <td class="tac">{{ contact.list_price }}</td>
+                            <td class="tac">{{ contact.fulfillment }}</td>
+                            <td class="tac">{{ contact.seller_id }}</td>
+                            <td class="tac">{{ contact.seller_name }}</td>
+                        </tr>
+                    {% endfor %}
+                {% elif content == "seller" %}
+                    <tr>
+                        <th>序号</th>
+                        <th>国家</th>
+                        <th>店铺id</th>
+                        <th>店铺名称</th>
+                        <th>店铺评级</th>
+                        <th>30天好评</th>
+                        <th>30天中评</th>
+                        <th>30天差评</th>
+                        <th>30天累计</th>
+                        <th>90天好评</th>
+                        <th>90天中评</th>
+                        <th>90天差评</th>
+                        <th>90天累计</th>
+                        <th>365天好评</th>
+                        <th>365天中评</th>
+                        <th>365天差评</th>
+                        <th>365天累计</th>
+                        <th>好评统计</th>
+                        <th>中评统计</th>
+                        <th>差评统计</th>
+                        <th>总统计</th>
+                    </tr>
+                    {% for contact in contacts %}
+                        <tr>
+                            <td class="tac">{{ contact.id }}</td>
+                            <td class="tac">{{ contact.region }}</td>
+                            <td class="tac">{{ contact.seller_id }}</td>
+                            <td class="tac">{{ contact.name }}</td>
+                            <td class="tac">{{ contact.rating }}</td>
+                            <td class="tac">{{ contact.last_30_days_positive_feedback_ratio }}</td>
+                            <td class="tac">{{ contact.last_30_days_neutral_feedback_ratio }}</td>
+                            <td class="tac">{{ contact.last_30_days_negative_feedback_ratio }}</td>
+                            <td class="tac">{{ contact.last_30_days_feedback_count }}</td>
+                            <td class="tac">{{ contact.last_90_days_positive_feedback_ratio }}</td>
+                            <td class="tac">{{ contact.last_90_days_neutral_feedback_ratio }}</td>
+                            <td class="tac">{{ contact.last_90_days_negative_feedback_ratio }}</td>
+                            <td class="tac">{{ contact.last_90_days_feedback_count }}</td>
+                            <td class="tac">{{ contact.last_12_months_positive_feedback_ratio }}</td>
+                            <td class="tac">{{ contact.last_12_months_neutral_feedback_ratio }}</td>
+                            <td class="tac">{{ contact.last_12_months_negative_feedback_ratio }}</td>
+                            <td class="tac">{{ contact.last_12_months_feedback_count }}</td>
+                            <td class="tac">{{ contact.lifetime_positive_feedback_ratio }}</td>
+                            <td class="tac">{{ contact.lifetime_neutral_feedback_ratio }}</td>
+                            <td class="tac">{{ contact.lifetime_negative_feedback_ratio }}</td>
+                            <td class="tac">{{ contact.lifetime_feedback_count }}</td>
+                        </tr>
+                    {% endfor %}
+            {% endif %}
+        {% elif platform == "tb" %}
+            {% if content == "keywords" %}
+                <tr>
+                    <th>序号</th>
+                    <th>平台</th>
+                    <th>产品id</th>
+                    <th>关键词</th>
+                    <th>产品页url</th>
+{#                    <th>排名</th>#}
+                    <th>页码</th>
+                    <th>页面位置</th>
+                </tr>
+                {% for contact in contacts %}
+                    <tr>
+                        <td class="tac">{{ contact.id }}</td>
+                        <td class="tac">淘宝</td>
+                        <td class="tac">{{ contact.product_id }}</td>
+                        <td class="tac">{{ contact.keyword }}</td>
+                        <td class="tac">{{ contact.productpage_url }}</td>
+{#                        <td class="tac">{{ contact.rank }}</td>#}
+                        <td class="tac">{{ contact.page_id }}</td>
+                        <td class="tac">{{ contact.page_position }}</td>
+                    </tr>
+                {% endfor %}
+            {% elif content == "product" or content == "keyword" %}
+                <tr>
+                        <th>序号</th>
+                        <th>平台</th>
+                        <th>产品id</th>
+                        <th>标题</th>
+{#                        <th>评级</th>#}
+                        <th>购买人数</th>
+                        <th>价格</th>
+                        <th>店铺地址</th>
+                        <th>店铺名称</th>
+                        <th>店铺链接</th>
+                    </tr>
+                {% for contact in contacts %}
+                        <tr>
+                            <td class="tac">{{ contact.id }}</td>
+                            <td class="tac">淘宝</td>
+                            <td class="tac">{{ contact.product_id }}</td>
+                            <td class="tac">{{ contact.title }}</td>
+{#                            <td class="tac">{{ contact.rating }}</td>#}
+                            <td class="tac">{{ contact.sell_count }}</td>
+                            <td class="tac">{{ contact.current_price }}</td>
+                            <td class="tac">{{ contact.shop_location }}</td>
+                            <td class="tac">{{ contact.shop_name }}</td>
+                            <td class="tac">{{ contact.shop_link }}</td>
+                        </tr>
+                    {% endfor %}
+            {% elif content == "seller" %}
+                <tr>
+                    <th>序号</th>
+                    <th>平台</th>
+                    <th>店铺id</th>
+                    <th>店铺名称</th>
+                    <th>店铺链接</th>
+                    <th>店铺位置</th>
+                    <th>店铺信用</th>
+                    <th>宝贝描述</th>
+                    <th>服务态度</th>
+                    <th>物流质量</th>
+                    <th>评级</th>
+                    <th>近30天售后速度</th>
+                    <th>近30天售后率</th>
+                    <th>近30天纠纷率</th>
+                    <th>近30天处罚数</th>
+                </tr>
+                {% for contact in contacts %}
+                        <tr>
+                            <td class="tac">{{ contact.id }}</td>
+                            <td class="tac">淘宝</td>
+                            <td class="tac">{{ contact.seller_id }}</td>
+                            <td class="tac">{{ contact.seller_name }}</td>
+                            <td class="tac">{{ contact.seller_page_link }}</td>
+                            <td class="tac">{{ contact.seller_location }}</td>
+                            <td class="tac">{{ contact.seller_credit }}</td>
+                            <td class="tac">{{ contact.seller_conform }}</td>
+                            <td class="tac">{{ contact.seller_service }}</td>
+                            <td class="tac">{{ contact.seller_logistics }}</td>
+                            <td class="tac">{{ contact.favorable_rate }}</td>
+                            <td class="tac">{{ contact.csspeed }}</td>
+                            <td class="tac">{{ contact.csrate }}</td>
+                            <td class="tac">{{ contact.dispute }}</td>
+                            <td class="tac">{{ contact.penalty_num }}</td>
+                        </tr>
+                    {% endfor %}
+            {% elif content == "review" %}
+                <tr>
+                    <th>序号</th>
+                    <th>平台</th>
+                    <th>产品id</th>
+                    <th>评论人</th>
+                    <th>评论人id</th>
+                    <th>评论内容</th>
+                    <th>评论时间</th>
+                    <th>评论json链接</th>
+                    <th>追加评论</th>
+                </tr>
+                {% for contact in contacts %}
+                    <tr>
+                        <td class="tac">{{ contact.id }}</td>
+                        <td class="tac">淘宝</td>
+                        <td class="tac">{{ contact.product_information }}</td>
+                        <td class="tac">{{ contact.reviewer_name }}</td>
+                        <td class="tac">{{ contact.reviewer_id }}</td>
+                        <td class="tac">{{ contact.review_content }}</td>
+                        <td class="tac">{{ contact.review_time }}</td>
+                        <td class="tac">{{ contact.review_json_link }}</td>
+                        <td class="tac">{{ contact.append_comment }}</td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
+        {% elif platform == "jd" %}
+            {% if content == "keywords" %}
+                <tr>
+                    <th>序号</th>
+                    <th>平台</th>
+                    <th>sku</th>
+                    <th>关键词</th>
+                    <th>产品页url</th>
+{#                    <th>排名</th>#}
+                    <th>页码</th>
+                    <th>页面位置</th>
+                </tr>
+                {% for contact in contacts %}
+                    <tr>
+                        <td class="tac">{{ contact.id }}</td>
+                        <td class="tac">京东</td>
+                        <td class="tac">{{ contact.sku }}</td>
+                        <td class="tac">{{ contact.keyword }}</td>
+                        <td class="tac">{{ contact.productpage_url }}</td>
+{#                        <td class="tac">{{ contact.rank }}</td>#}
+                        <td class="tac">{{ contact.page_id }}</td>
+                        <td class="tac">{{ contact.page_position }}</td>
+                    </tr>
+                {% endfor %}
+            {% elif content == "product" or content == "keyword" %}
+                <tr>
+                        <th>序号</th>
+                        <th>平台</th>
+                        <th>sku</th>
+                        <th>标题</th>
+                        <th>评级</th>
+                        <th>评论数</th>
+                        <th>价格</th>
+                        <th>店铺id</th>
+                        <th>店铺名称</th>
+                        <th>店铺链接</th>
+                    </tr>
+                {% for contact in contacts %}
+                        <tr>
+                            <td class="tac">{{ contact.id }}</td>
+                            <td class="tac">京东</td>
+                            <td class="tac">{{ contact.sku }}</td>
+                            <td class="tac">{{ contact.title }}</td>
+                            <td class="tac">{{ contact.rating }}</td>
+                            <td class="tac">{{ contact.review_count }}</td>
+                            <td class="tac">{{ contact.price }}</td>
+                            <td class="tac">{{ contact.shop_id }}</td>
+                            <td class="tac">{{ contact.shop_name }}</td>
+                            <td class="tac">{{ contact.shop_link }}</td>
+                        </tr>
+                    {% endfor %}
+            {% elif content == "seller" %}
+                <tr>
+                    <th>序号</th>
+                    <th>国家</th>
+                    <th>店铺id</th>
+                    <th>店铺名称</th>
+                    <th>店铺评级</th>
+                    <th>30天好评</th>
+                    <th>30天中评</th>
+                    <th>30天差评</th>
+                    <th>30天累计</th>
+                    <th>90天好评</th>
+                    <th>90天中评</th>
+                    <th>90天差评</th>
+                    <th>90天累计</th>
+                    <th>365天好评</th>
+                    <th>365天中评</th>
+                    <th>365天差评</th>
+                    <th>365天累计</th>
+                    <th>好评统计</th>
+                    <th>中评统计</th>
+                    <th>差评统计</th>
+                    <th>总统计</th>
+                </tr>
+                {% for contact in contacts %}
+                        <tr>
+                            <td class="tac">{{ contact.id }}</td>
+                            <td class="tac">{{ contact.region }}</td>
+                            <td class="tac">{{ contact.seller_id }}</td>
+                            <td class="tac">{{ contact.name }}</td>
+                            <td class="tac">{{ contact.rating }}</td>
+                            <td class="tac">{{ contact.last_30_days_positive_feedback_ratio }}</td>
+                            <td class="tac">{{ contact.last_30_days_neutral_feedback_ratio }}</td>
+                            <td class="tac">{{ contact.last_30_days_negative_feedback_ratio }}</td>
+                            <td class="tac">{{ contact.last_30_days_feedback_count }}</td>
+                            <td class="tac">{{ contact.last_90_days_positive_feedback_ratio }}</td>
+                            <td class="tac">{{ contact.last_90_days_neutral_feedback_ratio }}</td>
+                            <td class="tac">{{ contact.last_90_days_negative_feedback_ratio }}</td>
+                            <td class="tac">{{ contact.last_90_days_feedback_count }}</td>
+                            <td class="tac">{{ contact.last_12_months_positive_feedback_ratio }}</td>
+                            <td class="tac">{{ contact.last_12_months_neutral_feedback_ratio }}</td>
+                            <td class="tac">{{ contact.last_12_months_negative_feedback_ratio }}</td>
+                            <td class="tac">{{ contact.last_12_months_feedback_count }}</td>
+                            <td class="tac">{{ contact.lifetime_positive_feedback_ratio }}</td>
+                            <td class="tac">{{ contact.lifetime_neutral_feedback_ratio }}</td>
+                            <td class="tac">{{ contact.lifetime_negative_feedback_ratio }}</td>
+                            <td class="tac">{{ contact.lifetime_feedback_count }}</td>
+                        </tr>
+                    {% endfor %}
+            {% elif content == "review" %}
+                <tr>
+                    <th>序号</th>
+                    <th>平台</th>
+                    <th>产品id</th>
+                    <th>评论人</th>
+                    <th>评论人id</th>
+                    <th>评论内容</th>
+                    <th>评论时间</th>
+                    <th>评论json链接</th>
+                </tr>
+                {% for contact in contacts %}
+                    <tr>
+                        <td class="tac">{{ contact.id }}</td>
+                        <td class="tac">京东</td>
+                        <td class="tac">{{ contact.product_id }}</td>
+                        <td class="tac">{{ contact.reviewer_name }}</td>
+                        <td class="tac">{{ contact.reviewer_id }}</td>
+                        <td class="tac">{{ contact.review_content }}</td>
+                        <td class="tac">{{ contact.review_time }}</td>
+                        <td class="tac">{{ contact.review_json_link }}</td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
+        {% elif platform == "sina" or platform == "tencent"%}
+            <tr>
+                    <th>序号</th>
+                    <th>平台</th>
+{#                    <th>新闻id</th>#}
+                    <th>标题</th>
+{#                    <th>新闻链接</th>#}
+                    <th>摘要</th>
+                    <th>关键词</th>
+                    <th>发布时间</th>
+                    <th>类别</th>
+                </tr>
+            {% for contact in contacts %}
+                    <tr>
+                        <td class="tac">{{ contact.id }}</td>
+                        {% if platform == "sina" %}
+                            <td class="tac">新浪</td>
+                        {% elif platform == "tencent" %}
+                            <td class="tac">腾讯</td>
+                        {% endif %}
+{#                        <td class="tac">{{ contact.url_id }}</td>#}
+                        <td class="tac">{{ contact.title }}</td>
+{#                        <td class="tac">{{ contact.url }}</td>#}
+                        <td class="tac">{{ contact.summary }}</td>
+                        <td class="tac">{{ contact.keywords }}</td>
+                        <td class="tac">{{ contact.published_time }}</td>
+                        <td>{{ search_input }}</td>
+                    </tr>
+                {% endfor %}
+        {% endif %}
+
+    </table>
+{#    翻页操作#}
+    <div align="center">
+        <a href="/hello/?page=1&search_input={{ search_input }}&platform={{ platform }}&content={{ content }}">返回首页</a>
+        总记录数：{{ count }}
+        总页数：{{ num_pages }}
+        每页显示：<font color="blue">{{ page_count }}</font>条
+        当前页：<font color="red">{{ curr_page }}</font>
+        {% if has_previous %}
+            <a href="/hello/?page=1&search_input={{ search_input }}&platform={{ platform }}&content={{ content }}">首页</a>
+            <a href="/hello/?page={{ previous_page_number }}&search_input={{ search_input }}&platform={{ platform }}&content={{ content }}">上一页</a>
+            {% else %}
+                首页 上一页
+        {% endif %}
+        {% if has_next %}
+            <a href="/hello/?page={{ next_page_number }}&search_input={{ search_input }}&platform={{ platform }}&content={{ content }}">下一页</a>
+            <a href="/hello/?page={{ last_page }}&search_input={{ search_input }}&platform={{ platform }}&content={{ content }}">尾页</a>
+            {% else %}
+                下一页 尾页
+        {% endif %}
+    </div>
+</div>

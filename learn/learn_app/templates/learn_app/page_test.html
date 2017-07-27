@@ -1,0 +1,183 @@
+{#<script src="../../static/js/jquery.min.js"></script>#}
+{#<script src="../../static/js/bootstrap.min.js"></script>#}
+{#<script type="text/javascript" src="../../static/js/bootstrap-paginator.js"></script>#}
+{#<meta charset="UTF-8">#}
+{#<link href="../../static/css/bootstrap.min.css" rel="stylesheet" type="text/css">#}
+{#<link href="../../static/css/show.css" rel="stylesheet" type="text/css">#}
+
+{% extends "learn_app/base.html" %}
+{% block content %}
+<div class="container">
+    <h1>搜索结果</h1>
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#keyword">关键词</a></li>
+        <li><a href="#product">产品</a></li>
+        <li><a href="#seller">店铺</a></li>
+        <li><a href="#others">其它</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane fade in active" id="keyword">
+            <table class="table table-striped table-hover">
+                <tr>
+                    <th>序号</th>
+                    <th>国家</th>
+                    <th>asin</th>
+                    <th>关键词</th>
+                    <th>排名</th>
+                    <th>页码</th>
+                    <th>页面位置</th>
+                </tr>
+                {% for contact in contacts %}
+                    <tr>
+                        <td class="tac">{{ contact.id }}</td>
+                        <td class="tac">{{ contact.region }}</td>
+                        <td class="tac">{{ contact.asin }}</td>
+                        <td class="tac">{{ contact.keywords }}</td>
+                        <td class="tac">{{ contact.rank }}</td>
+                        <td class="tac">{{ contact.page_id }}</td>
+                        <td class="tac">{{ contact.page_position }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="tab-pane fade in active" id="product">
+            <table class="table">
+                <tr>
+                    <th>序号</th>
+                    <th>国家</th>
+                    <th>asin</th>
+                    <th>标题</th>
+                    <th>评级</th>
+                    <th>评论数</th>
+                    <th>价格</th>
+                    <th>原价</th>
+                    <th>发货方式</th>
+                    <th>店铺id</th>
+                    <th>店铺名称</th>
+                </tr>
+            {% for item in products %}
+                <tr>
+                    <td class="tac">{{ item.id }}</td>
+                    <td class="tac">{{ item.region }}</td>
+                    <td class="tac">{{ item.asin }}</td>
+                    <td class="tac">{{ item.title }}</td>
+                    <td class="tac">{{ item.rating }}</td>
+                    <td class="tac">{{ item.review_count }}</td>
+                    <td class="tac">{{ item.price }}</td>
+                    <td class="tac">{{ item.list_price }}</td>
+                    <td class="tac">{{ item.fulfillment }}</td>
+                    <td class="tac">{{ item.seller_id }}</td>
+                    <td class="tac">{{ item.seller_name }}</td>
+                </tr>
+            {% endfor %}
+            </table>
+        </div>
+        <div class="tab-pane fade in active" id="seller">
+            <table class="table">
+                <tr>
+                    <th>序号</th>
+                    <th>国家</th>
+                    <th>店铺id</th>
+                    <th>店铺名称</th>
+                    <th>店铺评级</th>
+                    <th>30天好评</th>
+                    <th>30天中评</th>
+                    <th>30天差评</th>
+                    <th>30天累计</th>
+                    <th>90天好评</th>
+                    <th>90天中评</th>
+                    <th>90天差评</th>
+                    <th>90天累计</th>
+                    <th>365天好评</th>
+                    <th>365天中评</th>
+                    <th>365天差评</th>
+                    <th>365天累计</th>
+                    <th>好评统计</th>
+                    <th>中评统计</th>
+                    <th>差评统计</th>
+                    <th>总统计</th>
+                </tr>
+                <tr>
+                    <td class="tac">{{ seller.id }}</td>
+                    <td class="tac">{{ seller.region }}</td>
+                    <td class="tac">{{ seller.seller_id }}</td>
+                    <td class="tac">{{ seller.name }}</td>
+                    <td class="tac">{{ seller.rating }}</td>
+                    <td class="tac">{{ seller.last_30_days_positive_feedback_ratio }}</td>
+                    <td class="tac">{{ seller.last_30_days_neutral_feedback_ratio }}</td>
+                    <td class="tac">{{ seller.last_30_days_negative_feedback_ratio }}</td>
+                    <td class="tac">{{ seller.last_30_days_feedback_count }}</td>
+                    <td class="tac">{{ seller.last_90_days_positive_feedback_ratio }}</td>
+                    <td class="tac">{{ seller.last_90_days_neutral_feedback_ratio }}</td>
+                    <td class="tac">{{ seller.last_90_days_negative_feedback_ratio }}</td>
+                    <td class="tac">{{ seller.last_90_days_feedback_count }}</td>
+                    <td class="tac">{{ seller.last_12_months_positive_feedback_ratio }}</td>
+                    <td class="tac">{{ seller.last_12_months_neutral_feedback_ratio }}</td>
+                    <td class="tac">{{ seller.last_12_months_negative_feedback_ratio }}</td>
+                    <td class="tac">{{ seller.last_12_months_feedback_count }}</td>
+                    <td class="tac">{{ seller.lifetime_positive_feedback_ratio }}</td>
+                    <td class="tac">{{ seller.lifetime_neutral_feedback_ratio }}</td>
+                    <td class="tac">{{ seller.lifetime_negative_feedback_ratio }}</td>
+                    <td class="tac">{{ seller.lifetime_feedback_count }}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="tab-pane fade in active" id="others">
+            <table class="table">
+                <tr>
+                    <th>序号</th>
+                    <th>国家</th>
+                    <th>asin</th>
+                    <th>标题</th>
+                    <th>评级</th>
+                    <th>评论数</th>
+                    <th>价格</th>
+                    <th>原价</th>
+                    <th>发货方式</th>
+                    <th>店铺id</th>
+                    <th>店铺名称</th>
+                </tr>
+            {% for item in products %}
+                <tr>
+                    <td class="tac">{{ item.id }}</td>
+                    <td class="tac">{{ item.region }}</td>
+                    <td class="tac">{{ item.asin }}</td>
+                    <td class="tac">{{ item.title }}</td>
+                    <td class="tac">{{ item.rating }}</td>
+                    <td class="tac">{{ item.review_count }}</td>
+                    <td class="tac">{{ item.price }}</td>
+                    <td class="tac">{{ item.list_price }}</td>
+                    <td class="tac">{{ item.fulfillment }}</td>
+                    <td class="tac">{{ item.seller_id }}</td>
+                    <td class="tac">{{ item.seller_name }}</td>
+                </tr>
+            {% endfor %}
+            </table>
+        </div>
+        <div align="center">
+                <a href="/page_test/?page=1">返回首页</a>
+                总记录数：{{ count }}
+                总页数：{{ num_pages }}
+                当前页：<font color="red">{{ curr_page }}</font>
+                {% if has_previous %}
+                    <a href="/page_test/?page=1">首页</a>
+                    <a href="/page_test/?page={{ previous_page_number }}">上一页</a>
+                    {% else %}
+                        首页 上一页
+                {% endif %}
+                {% if has_next %}
+                    <a href="/page_test/?page={{ next_page_number }}">下一页</a>
+                    <a href="/page_test/?page={{ last_page }}">尾页</a>
+                    {% else %}
+                        下一页 尾页
+                {% endif %}
+            </div>
+        <script>
+            $('.nav a').click(function (e) {
+                e.preventDefault()
+                $(this).tab('show')
+            });
+        </script>
+    </div>
+</div>
+{% endblock %}

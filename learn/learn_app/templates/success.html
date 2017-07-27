@@ -1,0 +1,21 @@
+{% extends "learn_app/base.html" %}
+{% block content %}
+    <div>
+        <div style="width: 200px; float: left">{% include "sidebar_main.html" %}</div>
+        <div style="width: 800px; height: 500px; float: left">
+            <div class="tab-pane fade in active" id="download_queue">a</div>
+            <div class="tab-pane fade in active" id="current">b</div>
+            <div class="tab-pane fade in active" id="result">c</div>
+            <div class="tab-pane fade in active" id="about">d</div>
+        </div>
+    </div>
+    <script>
+        $('.sidebar a').click(function (e) {
+            e.preventDefault()
+            $(this).tab('show')
+        });
+    </script>
+{#{% include "content.html" %}#}
+{#{% block content %}{% endblock %}#}
+{#<a href="http://127.0.0.1:8000/logout/">退出</a>#}
+{% endblock %}

@@ -1,0 +1,97 @@
+{#<?xml version="1.0" encoding="UTF-8"?>#}
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">#}
+{#<head>#}
+{#    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />#}
+{#    <title>登陆</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{#<h1>登陆页面：</h1>#}
+{#<form method = 'post' enctype="multipart/form-data">#}
+{#    {% csrf_token %}#}
+{#    {{uf.as_p}}#}
+{#    <input type="submit" value = "ok" />#}
+{#</form>#}
+{#<br>#}
+{#<a href="http://127.0.0.1:8000/regist/">注册</a>#}
+{#</body>#}
+{#</html>#}
+
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+<script src="../static/js/jquery.min.js"></script>
+<script src="../static/js/bootstrap.min.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="../static/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="../static/css/www.css" rel="stylesheet" type="text/css">
+<title></title>
+</head>
+<body>
+<div class="container-fluid" style="margin-top:80px;margin-bottom:93px">
+    <div class="row text-center">
+        <div class="position-relative">
+        <div id="login-box" class="login-box visible widget-box no-border">
+            <div class="widget-body">
+                <div class="widget-main">
+                    <h4 class="header blue lighter bigger">
+                        <i class="icon-coffee green"></i>
+                        分布式爬虫系统登录界面
+                    </h4>
+
+                    <div class="space-6"></div>
+
+    {#                    {% if password_is_wrong %}#}
+    {#                        <div class="alert alert-error">#}
+    {#                            <button type="button" class="close" data-dismiss="alert">×</button>#}
+    {#                            用户名或密码错误,重新输入!#}
+    {#                        </div>#}
+    {#                    {% endif %}#}
+
+                    <form method="post" action="{% url 'login' %}">
+                        {% csrf_token %}
+                        <tr>
+                            <td>用户名：</td>
+                            <td>
+                                <label class="block clearfix">
+                                <span class="block center">
+                                    <i class="icon-user"></i>
+                                    {{ uf.username }}
+    {#                                {{ uf.username.errors }}#}
+                                </span>
+                                </label>
+                            </td>
+                        </tr><br>
+                        <tr>
+                            <td>密  码：</td>
+                            <td>
+                                <label class="block clearfix">
+                                <span class="block center">
+                                    <i class="icon-lock"></i>
+                                    {{ uf.password }}
+    {#                                {{ uf.password.errors }}#}
+                                </span>
+                                </label>
+                            </td>
+                        </tr>
+                            <div class="clearfix center">
+                                <button type="submit" class="width-60 btn btn-sm btn-primary">
+                                    登  录
+                                </button>
+                            </div>
+                    </form>
+                </div><!-- /widget-main -->
+
+                <div class="toolbar clearfix">
+                    <div style="width: 100%;">
+                        <i class="icon-signal"></i>
+                        注册或忘记密码，请逐级上报恢复。
+                    </div>
+                </div>
+            </div><!-- /widget-body -->
+        </div><!-- /login-box -->
+    </div><!-- /position-relative -->
+    </div>
+</div>
+</body>

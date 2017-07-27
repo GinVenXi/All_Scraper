@@ -1,0 +1,122 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<script src="../../static/js/jquery.min.js"></script>
+<script src="../../static/js/bootstrap.min.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="../../static/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="../../static/css/www.css" rel="stylesheet" type="text/css">
+<title></title>
+</head>
+<body>
+    <div class="top-bg">
+        <div class="title" style="text-align: center; margin-top: 60px;">分布式爬虫系统</div>
+		<div class="container-fluid" style="margin-top:80px;margin-bottom:93px">
+			<div class="row text-center">
+				<form class="form-inline" id="search_form" action="" method="">
+{#                    {% csrf_token %}#}
+                    <script>
+                    $.ajaxSetup({
+                        data: {csrfmiddlewaretoken: '{{ csrf_token }}' },
+                    });
+                    </script>
+					<div class="btn-group top-type right-mg" data-toggle="buttons">
+                        <label class="btn btn-lg active" data-type="" title="keyword" id="keyword"><input type="radio">关键词</label>
+						<label class="btn btn-lg" data-type="" title="product" id="product"><input type="radio" checked="checked">产品</label>
+						<label class="btn btn-lg hidden" data-type="" title="review" id="review"><input type="radio">评论</label>
+                        <label class="btn btn-lg" data-type="" title="seller" id="seller"><input type="radio">店铺</label>
+					</div>
+					<div class="input-group input-group-lg top-input">
+						<ul style="width: 800px;" class="tab" >
+                            <li class="active">
+								<a data-toggle="tab" href="#" data-type="" class="amz">亚马逊卖家版</a>
+							</li>
+							<li>
+								<a data-toggle="tab" href="#" data-type="" class="tb">淘宝卖家版</a>
+							</li>
+							<li>
+								<a data-toggle="tab" href="#" data-type="" class="jd">京东卖家版</a>
+							</li>
+
+							<li>
+								<a data-toggle="tab" href="#" data-type="" class="sina">新浪新闻</a>
+							</li>
+							<li>
+								<a data-toggle="tab" href="#" data-type="" class="tencent">腾讯新闻</a>
+							</li>
+						</ul>
+						<span class="input-group-addon"><img src="../../static/images/search.png"></span>
+						<input type="text" id="search_input" name="search_input" class="form-control" style="width:520px" placeholder="">
+						<span class="input-group-btn">
+                            <button id="search" class="btn" type="button">搜索</button>
+                        </span>
+					</div>
+{#                    <p class="title">result: <span id='result'></span></p>#}
+				</form>
+			</div>
+
+		</div>
+		<div class="text-center">
+            <p class="address" style="color: white; font-size: 14px;">南京信息工程大学 南京市宁六路219号(邮编:210044)<br/>
+            <a href="http://www.miitbeian.gov.cn">&nbsp;苏ICP&nbsp;备05007124号-1&nbsp;</a>
+            </p>
+{#			<a class="btn btn-lg btn-buy" style="letter-spacing: 2px;padding-left: 21px;padding-right: 18px;" href="">立即订购</a>#}
+		</div>
+	</div>
+
+<script>
+    $(document).ready(function(){
+        $(".jd").click(function () {
+            $("#product").removeClass("hidden")
+            $("#seller").removeClass("hidden")
+            $("#review").removeClass("hidden")
+        })
+        $(".tb").click(function () {
+            $("#product").removeClass("hidden")
+            $("#seller").removeClass("hidden")
+            $("#review").addClass("hidden")
+        })
+        $(".amz").click(function () {
+            $("#product").removeClass("hidden")
+            $("#seller").removeClass("hidden")
+            $("#review").addClass("hidden")
+        })
+        $(".sina").click(function () {
+            $("#product").addClass("hidden")
+            $("#seller").addClass("hidden")
+            $("#review").addClass("hidden")
+
+        })
+        $(".tencent").click(function () {
+            $("#product").addClass("hidden")
+            $("#seller").addClass("hidden")
+            $("#review").addClass("hidden")
+        })
+        $("#search").click(function(){
+            var search_input = $("#search_input").val();
+            var platform = $("li.active a").attr("class");
+            var content = $("label.active").attr("title");
+{#            $.get("/search/", {'search_input': search_input, 'platform': platform, 'content': content}, function(ret){#}
+{#                $('#result').html(ret)#}
+{#            });#}
+{#            var data = {"search_input": search_input, "platform": platform, "content": content};#}
+{#            $.ajax({#}
+{#                type: 'POST',#}
+{#                url: 'show/',#}
+{#                dataType: 'json',#}
+{#                data: data,#}
+{#                success: function(data){#}
+{#                    console.info(data);#}
+{#                    alert(data)#}
+{#                }#}
+{#            });#}
+{#            window.location.href="http://localhost:8000/page_test/?page=1&search_input="+search_input+"&platform="+platform+"&content="+content#}
+{#            window.location.href="http://localhost:8000/show/?page=1&search_input="+search_input+"&platform="+platform+"&content="+content#}
+
+            window.location.href = "http://localhost:8000/hello/?page=1&search_input="+search_input+"&platform="+platform+"&content="+content
+        });
+    });
+</script>
+</body>
+</html>
+

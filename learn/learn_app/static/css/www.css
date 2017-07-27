@@ -1,0 +1,147 @@
+/* app css stylesheet */
+
+body:before {
+    content: "";
+    display: block;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+}
+
+body {
+    padding-bottom: 0;
+    background-color: #fff;
+    min-height: 100%;
+    font-family: Microsoft Yahei, 黑体, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    color: #515151;
+}
+.bottom-mg{margin-bottom: 10px;}
+.right-mg{margin-right: 10px;}
+.mj-invisible{
+  visibility: hidden;
+}
+.mj-spark-cell{
+  text-align: center;
+  width: 103px;
+  margin: 0 auto;
+}
+.mj-text-darker{
+  color:#000 !important;
+}
+.mj-text-dark{
+  
+}
+.mj-text-light{
+  color: #909094 !important;
+}
+.mj-text-lighter{
+  
+}
+.top-bg {
+  background: url(../images/topbg.jpg) no-repeat center top;
+  margin-top: -25px;
+  height: 640px;
+  padding-top: 123px;
+}
+.top-bg .title {
+    text-align: center;
+    color: white;
+    font-weight: normal;
+    font-size: 42px;
+    margin: 7px auto;
+    opacity: 0.9;
+}
+.top-input .input-group-addon{
+  width: 20px !important;
+  background: #fff;
+  border: none;
+}
+.top-input input[type="text"]{
+  background: #fff;
+  border: none;
+  box-shadow: none;
+}
+.top-type, .top-input{
+  padding:4px 10px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+.top-input .input-group-btn:last-child > .btn{
+  border-radius: 6px;
+  background: #FF6544;
+  color: #fff;
+}
+.top-input .tab{
+  position: absolute;
+  top:-50px;
+}
+.top-input .tab li{
+  display: block;
+  float: left;
+}
+.top-input .tab a{
+  color: #fff;
+  opacity: 0.7;
+  font-size:18px;
+  display: inline-block;
+  padding:10px;
+  line-height: 1;
+  position: relative;
+}
+.top-input .tab li.active a:before {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    display: block;
+    width: 17px;
+    height: 17px;
+    background-color: #fff;
+    content: "";
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    ms-transform: rotate(45deg);
+    margin-left: -9px;
+}
+.top-input .tab li.active a{
+  opacity: 1;
+}
+.top-type .btn{
+  color: #FF6544;
+  background: #fff;
+  margin:0 !important;
+  border-radius: 6px !important;
+}
+.top-type .btn.active{
+  color: #fff;
+  background: #FF6544;
+}
+.intro-row{
+  border-bottom: 1px solid #e5e5e5;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+.buy-section{
+  padding-top:48px;
+  padding-bottom: 70px;
+  background-color: #eee;
+}
+.buy-section p{
+  font-size:19px;
+}
+.btn-buy {
+  color: #fff;
+  background-color: #FF6B45;
+}
+.buy-section .btn-buy {
+    color: #fff;
+    background-color: #FF6B45;
+    margin-top: 60px;
+    margin-bottom: 5px;
+}
