@@ -1,0 +1,43 @@
+<div class="pagination">
+    <span class="step-links">
+        {% if rows.has_previous %}
+            <a id='pre' href="#">previous</a>
+        {% endif %}
+        <span class="current">
+            Page {{ rows.number }} of {{ rows.paginator.num_pages }}.
+        </span>
+        {% if rows.has_next %}
+            <a id="next" href="#" >next</a>
+        {% endif %}
+    </span>
+</div>
+{%block js%}
+  <script type="text/javascript">
+     $('.step-links #next').click(function(){
+        {% if rows.has_next %}
+        page={{ rows.next_page_number }};
+             {% endif %}
+        $.ajax({
+            type:"POST",
+            url:"/submitjobs/",
+            data:{"page":page},
+            success: function(data){
+                $("#jobs_table").html(data);
+            }
+        })
+     });
+     $('.step-links #pre').click(function(){
+         {% if rows.has_previous %}
+        page={{ rows.previous_page_number }};
+　　　　　　{% endif %}
+        $.ajax({
+            type:"POST",
+            url:"/submitjobs/",
+            data:{"page":page},
+            success:function(data){
+                    $("#jobs_table").html(data);
+            }
+        })
+     });
+ </script>
+  {%endblock%}

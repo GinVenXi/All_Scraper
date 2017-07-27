@@ -1,0 +1,22 @@
+#coding: utf-8
+'''
+创建人：Javen
+创建时间：
+'''
+from Models.Mapper.Abstract import Model_Mapper_Abstract
+class Model_Mapper_AmazonProductReviewImage(Model_Mapper_Abstract):
+    def __init__(self):
+        super(Model_Mapper_AmazonProductReviewImage, self).__init__()
+
+    def save(self, data):
+        searchData = {
+            'region': data['region'],
+            'review_id': data['review_id'],
+            'url': data['url'],
+        }
+        result = self.findData("all", "amazon_product_review_image", searchData)
+        if (result):
+            result = self.update("amazon_product_review_image", data, searchData)
+        else:
+            result = self.insert("amazon_product_review_image", data)
+        return result

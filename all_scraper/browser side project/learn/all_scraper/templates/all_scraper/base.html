@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <style>
+        h1, h2, h3, h4, h5, p, div {
+            font-family: 微软雅黑;
+        }
+    </style>
+    <link href="../../static/all_scraper/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../../static/all_scraper/css/show.css" rel="stylesheet" type="text/css">
+    <script src="../../static/all_scraper/js/jquery.min.js"></script>
+    <script src="../../static/all_scraper/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../static/all_scraper/js/bootstrap-paginator.js"></script>
+</head>
+<body>
+    {% include "all_scraper/header.html" %}
+    {% block content %}{% endblock %}
+    {% include "all_scraper/footer.html" %}
+
+</body>
+</html>
