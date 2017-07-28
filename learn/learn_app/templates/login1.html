@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>login</title>
+<link rel="stylesheet" type="text/css" href="../static/css/login/css/normalize.css" />
+<link rel="stylesheet" type="text/css" href="../static/css/login/css/demo.css" />
+<!--必要样式-->
+<link rel="stylesheet" type="text/css" href="../static/css/login/css/component.css" />
+
+<script src="../static/js/jquery.min.js"></script>
+<script src="../static/css/login/js/html5.js"></script>
+
+</head>
+<body>
+		<div class="container demo-1">
+			<div class="content">
+				<div id="large-header" class="large-header">
+					<canvas id="demo-canvas"></canvas>
+					<div class="logo_box">
+						<h3>分布式爬虫系统</h3>
+						<form action="{% url 'login' %}" name="f" method="post">
+                            {% csrf_token %}
+							<div class="input_outer">
+								<span class="u_user"></span>
+								<input name="username" class="text" style="color: #FFFFFF !important" type="text" placeholder="请输入账户">
+							</div>
+							<div class="input_outer">
+								<span class="us_uer"></span>
+								<input name="password" class="text" style="color: #FFFFFF !important; position:absolute; z-index:100;"value="" type="password" placeholder="请输入密码">
+							</div>
+                            <div class="clearfix center" style="display: none">
+                                <button id="old" type="submit" class="width-60 btn btn-sm btn-primary">
+                                    登  录
+                                </button>
+                            </div>
+							<div class="mb2"><a class="act-but submit" id="new" href="javascript:;" style="color: #FFFFFF">登录</a></div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div><!-- /container -->
+        <script>
+            $( "#new" ).click(function() {
+              $( "#old" ).trigger( "click" );
+            });
+        </script>
+		<script src="/static/css/login/js/TweenLite.min.js"></script>
+		<script src="/static/css/login/js/EasePack.min.js"></script>
+		<script src="/static/css/login/js/rAF.js"></script>
+		<script src="/static/css/login/js/demo-1.js"></script>
+		<div style="text-align:center;">
+{#<p>更多模板：<a href="http://www.mycodes.net/" target="_blank">源码之家</a></p>#}
+</div>
+	</body>
+</html>

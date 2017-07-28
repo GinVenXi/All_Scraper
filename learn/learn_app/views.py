@@ -73,6 +73,7 @@ def regist(request):
 #登陆
 def login(request):
     if request.method == 'POST':
+        print (request.body)
         uf = UserForm(request.POST)
         if uf.is_valid():
             #获取表单用户密码
@@ -88,15 +89,58 @@ def login(request):
                 return response
             else:
                 #比较失败，还在login
-                return HttpResponseRedirect('/login/')
+                return HttpResponseRedirect('/login1/')
     else:
         uf = UserForm()
-    return render(request, 'login.html', {'uf':uf})
+    return render(request, 'login1.html', {'uf':uf})
+
+def login1(request):
+    if request.method == 'POST':
+        uf = UserForm(request.POST)
+        if uf.is_valid():
+            #获取表单用户密码
+            username = uf.cleaned_data['username']
+            password = uf.cleaned_data['password']
+            #获取的表单数据与数据库进行比较
+            user = User.objects.filter(username__exact = username,password__exact = password)
+            if user:
+                #比较成功，跳转index
+                response = HttpResponseRedirect('/index1/')
+                #将username写入浏览器cookie,失效时间为3600
+                response.set_cookie('username',username,3600)
+                return response
+            else:
+                #比较失败，还在login
+                return HttpResponseRedirect('/login1/')
+    else:
+        uf = UserForm()
+    return render(request, 'login1.html', {'uf':uf})
+
+def index1(request):
+    return render(request, 'index1.html')
+
+def main(request):
+    return render(request, 'main.html')
+
+def nav(request):
+    return render(request, 'nav.html')
+
+def button(request):
+    return render(request, 'button.html')
+
+def form(request):
+    return render(request, 'form.html')
+
+def table(request):
+    return render(request, 'table.html')
+
+def auxiliar(request):
+    return render(request, 'auxiliar.html')
 
 #登陆成功
 def indexs(request):
     username = request.COOKIES.get('username','')
-    return render_to_response('success.html' ,{'username':username})
+    return render_to_response('index1.html' ,{'username':username})
 
 #退出
 def logout(req):

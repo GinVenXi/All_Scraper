@@ -25,7 +25,7 @@ SECRET_KEY = '_&ldu_td&j5-27h_^ffc784b6j7cx&il)(@fsezmvnrp0lat%o'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -125,7 +125,7 @@ TIME_ZONE = 'Asia/Shanghai'
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+# TIME_ZONE = 'UTC'
 
 USE_I18N = True
 

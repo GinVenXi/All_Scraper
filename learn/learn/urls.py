@@ -25,6 +25,17 @@ urlpatterns = [
 
     url(r'^$', learn_views.login, name='login'),
     url(r'^login/$',learn_views.login,name = 'login'),
+
+    url(r'^login1/$',learn_views.login1,name = 'login1'),
+    url(r'^index1/$', learn_views.index1, name='index1'),
+    url(r'^main/$', learn_views.main, name='main'),
+    url(r'^success/button/$', learn_views.button, name='button'),
+    url(r'^success/form/$', learn_views.form, name='form'),
+    url(r'^success/table/$', learn_views.table, name='table'),
+    url(r'^success/nav/$', learn_views.nav, name='nav'),
+    url(r'^success/auxiliar/$', learn_views.auxiliar, name='auxiliar'),
+
+
     url(r'^regist/$',learn_views.regist,name = 'regist'),
     url(r'^logout/$',learn_views.logout,name = 'logout'),
     url(r'^success/$',learn_views.indexs,name = 'success'),

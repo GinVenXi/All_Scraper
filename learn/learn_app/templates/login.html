@@ -41,14 +41,6 @@
                     </h4>
 
                     <div class="space-6"></div>
-
-    {#                    {% if password_is_wrong %}#}
-    {#                        <div class="alert alert-error">#}
-    {#                            <button type="button" class="close" data-dismiss="alert">×</button>#}
-    {#                            用户名或密码错误,重新输入!#}
-    {#                        </div>#}
-    {#                    {% endif %}#}
-
                     <form method="post" action="{% url 'login' %}">
                         {% csrf_token %}
                         <tr>
